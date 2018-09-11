@@ -1,0 +1,4 @@
+{
+    "argv": ["python", "-m", "dot_kernel", "-f", "{connection_file}"],
+    "display_name": "dot"
+}
