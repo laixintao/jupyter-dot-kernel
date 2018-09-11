@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+import base64
+import urllib
 
 from ipykernel.kernelbase import Kernel
 
@@ -19,8 +21,14 @@ class EchoKernel(Kernel):
         self, code, silent, store_history=True, user_expressions=None, allow_stdin=False
     ):
         if not silent:
-            stream_content = {"name": "stdout", "text": code}
-            self.send_response(self.iopub_socket, "stream", stream_content)
+            with open("a.png", "rb") as a:
+                data = urllib.parse.quote(base64.b64encode(a.read()))
+            stream_content = {
+                "metadata": {"image/png": {"width": 640, "height": 480}},
+                "data": {"image/png": data},
+            }
+
+            self.send_response(self.iopub_socket, "display_data", stream_content)
 
         return {
             "status": "ok",
