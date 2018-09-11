@@ -33,3 +33,10 @@ and try run this:
 You will see:
 
 ![](readme_assets/first_try.png)
+
+## TODO
+
+1. update [this](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels).
+2. add more render tools not just `dot`
+3. add more filetype support not just `png`
+4. auto indent
