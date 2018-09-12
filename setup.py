@@ -5,7 +5,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="dot_kernel",
-    version="1.0.0",
+    version="0.1.4",
     url="https://github.com/laixintao/jupyter-dot-kernel",
     author="laixintao",
     author_email="laixintao1995@163.com",
