@@ -6,9 +6,21 @@ The dot kernel for jupyter!
 
 ## Install
 
+You should have graphviz first. Install by brew: `brew install graphviz`.
+
+Then,
+
 ```
 pip install dot_kernel
 ```
+
+Add kernel to your jupyter:
+
+```
+install-dot-kernel
+```
+
+ALL DONE! 🎉🎉🎉
 
 Run using:
 
