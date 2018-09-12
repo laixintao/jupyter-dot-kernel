@@ -7,17 +7,17 @@ from graphviz import Source
 from ipykernel.kernelbase import Kernel
 
 
-class EchoKernel(Kernel):
-    implementation = "Echo"
-    implementation_version = "1.0"
-    language = "no-op"
-    language_version = "0.1"
+class DotKernel(Kernel):
+    implementation = "graphviz"
+    implementation_version = "2.40.1"
+    language = "dot"
+    language_version = "latest"
     language_info = {
-        "name": "Any text",
+        "name": "dot",
         "mimetype": "text/plain",
-        "file_extension": ".txt",
+        "file_extension": ".gv",
     }
-    banner = "Echo kernel - as useful as a parrot"
+    banner = "Dot language - render graph using graphviz."
 
     def do_execute(
         self, code, silent, store_history=True,
