@@ -9,7 +9,6 @@ import imghdr
 
 def get_png_size(_bytes):
     head = _bytes[:24]
-    print(head)
     check = struct.unpack(">i", head[4:8])[0]
     if check != 0x0d0a1a0a:
         raise Exception("Not a png file.")

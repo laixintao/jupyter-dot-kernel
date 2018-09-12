@@ -1,0 +1,3 @@
+#!/bin/sh
+
+jupyter kernelspec install dot_kernel_spec
