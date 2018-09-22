@@ -2,6 +2,8 @@
 
 The dot kernel for jupyter!
 
+There is an awesome dot language tutorial in Chinese: [learn-dot](https://github.com/laixintao/learn-dot).
+
 ![](./readme_assets/demo.jpeg)
 
 ## Install
