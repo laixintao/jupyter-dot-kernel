@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import base64
 import urllib
+import subprocess
 from . import imgsize
 from graphviz import Source
 
@@ -12,28 +13,33 @@ class DotKernel(Kernel):
     implementation_version = "2.40.1"
     language = "dot"
     language_version = "latest"
-    language_info = {
-        "name": "dot",
-        "mimetype": "text/plain",
-        "file_extension": ".gv",
-    }
+    language_info = {"name": "dot", "mimetype": "text/plain", "file_extension": ".gv"}
     banner = "Dot language - render graph using graphviz."
 
     def do_execute(
-        self, code, silent, store_history=True,
-        user_expressions=None, allow_stdin=False
+        self, code, silent, store_history=True, user_expressions=None, allow_stdin=False
     ):
         src = Source(code)
-        png_src = src.pipe(format="png")
+        has_error = False
+        try:
+            png_src = src.pipe(format="png")
+        except subprocess.CalledProcessError as _called_error:
+            has_error = True
+            error = _called_error.stderr
+        # send response to web client
         if not silent:
-            data = urllib.parse.quote(base64.b64encode(png_src))
-            width, height = imgsize.get_png_size(png_src)
-            stream_content = {
-                "metadata": {"image/png": {"width": width, "height": height}},
-                "data": {"image/png": data},
-            }
+            if not has_error:
+                data = urllib.parse.quote(base64.b64encode(png_src))
+                width, height = imgsize.get_png_size(png_src)
+                stream_content = {
+                    "metadata": {"image/png": {"width": width, "height": height}},
+                    "data": {"image/png": data},
+                }
 
-            self.send_response(self.iopub_socket, "display_data", stream_content)
+                self.send_response(self.iopub_socket, "display_data", stream_content)
+            else:
+                stream_content = {"name": "stdout", "text": error.decode()}
+                self.send_response(self.iopub_socket, "stream", stream_content)
 
         return {
             "status": "ok",
