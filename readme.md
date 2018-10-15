@@ -8,7 +8,9 @@ There is an awesome dot language tutorial in Chinese: [learn-dot](https://github
 
 ## Install
 
-You should have graphviz first. Install by brew: `brew install graphviz`.
+You should have graphviz first. 
+- Install by brew: `brew install graphviz`.
+- or `sudo apt-get inatall graphviz` for ubuntu
 
 Then,
 
