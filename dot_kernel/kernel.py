@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 import base64
-import urllib
 import subprocess
 from . import imgsize
 from graphviz import Source
@@ -29,7 +28,7 @@ class DotKernel(Kernel):
         # send response to web client
         if not silent:
             if not has_error:
-                data = urllib.parse.quote(base64.b64encode(png_src))
+                data = base64.b64encode(png_src)
                 width, height = imgsize.get_png_size(png_src)
                 stream_content = {
                     "metadata": {"image/png": {"width": width, "height": height}},
