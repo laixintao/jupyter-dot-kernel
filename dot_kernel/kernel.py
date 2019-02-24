@@ -28,11 +28,13 @@ class DotKernel(Kernel):
         # send response to web client
         if not silent:
             if not has_error:
-                data = base64.b64encode(png_src)
+                # Note: JSON encoding requires a string, so after base64 encoding the data
+                # we must decode the resulting bytes
+                data_string = base64.b64encode(png_src).decode("utf-8")
                 width, height = imgsize.get_png_size(png_src)
                 stream_content = {
                     "metadata": {"image/png": {"width": width, "height": height}},
-                    "data": {"image/png": data},
+                    "data": {"image/png": data_string},
                 }
 
                 self.send_response(self.iopub_socket, "display_data", stream_content)
