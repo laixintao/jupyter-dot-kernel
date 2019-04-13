@@ -12,7 +12,7 @@ You should have graphviz first.
 - Install by brew: `brew install graphviz`.
 - or `sudo apt-get inatall graphviz` for ubuntu
 
-Then,
+Then, for python 2
 
 ```
 pip install dot_kernel
@@ -20,9 +20,20 @@ pip install dot_kernel
 
 Add kernel to your jupyter:
 
+For python 2
+
 ```
 install-dot-kernel
 ```
+
+For python 3
+
+```
+git clone https://github.com/laixintao/jupyter-dot-kernel.git
+cd jupyter-dot-kernel
+jupyter kernelspec install dot_kernel_spec --user
+```
+
 
 ALL DONE! 🎉🎉🎉
 
