@@ -1,3 +1,11 @@
-#!/bin/sh
+#!/usr/bin/env python
+# -*- coding:utf-8 -*-
+from os.path import join
+from subprocess import call
 
-jupyter kernelspec install dot_kernel_spec --user
+from pkg_resources import get_distribution
+
+if __name__ == '__main__':
+    dist = get_distribution('dot-kernel')
+    where = join(dist.location, 'dot_kernel_spec')
+    call(['jupyter', 'kernelspec', 'install', '--user', where])
