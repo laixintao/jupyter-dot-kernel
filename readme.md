@@ -4,7 +4,7 @@ The dot kernel for jupyter!
 
 There is an awesome dot language tutorial in Chinese: [learn-dot](https://github.com/laixintao/learn-dot).
 
-![](./readme_assets/demo.jpeg)
+![demo.jpeg](https://github.com/laixintao/jupyter-dot-kernel/raw/master/readme_assets/demo.jpeg)
 
 ## Install
 
@@ -34,7 +34,7 @@ jupyter notebook
 
 Select new -> dot
 
-![](readme_assets/new_dot.png)
+![new_dot.png](https://github.com/laixintao/jupyter-dot-kernel/raw/master/readme_assets/new_dot.png)
 
 and try run this:
 
@@ -48,7 +48,7 @@ and try run this:
 
 You will see:
 
-![](readme_assets/first_try.png)
+![first_try.png](https://github.com/laixintao/jupyter-dot-kernel/raw/master/readme_assets/first_try.png)
 
 ## TODO
 
