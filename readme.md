@@ -10,7 +10,7 @@ There is an awesome dot language tutorial in Chinese: [learn-dot](https://github
 
 You should have graphviz first. 
 - Install by brew: `brew install graphviz`.
-- or `sudo apt-get inatall graphviz` for ubuntu
+- or `sudo apt-get install graphviz` for ubuntu
 
 Then,
 
