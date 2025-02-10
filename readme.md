@@ -50,6 +50,13 @@ You will see:
 
 ![first_try.png](https://github.com/laixintao/jupyter-dot-kernel/raw/master/readme_assets/first_try.png)
 
+## Running in Docker
+
+A container based on `jupyter/datascience` named `garo/jupyter-dot` is available on Docker Hub.
+If you have docker you can run it as you would any [other jupyter container](https://jupyter-docker-stacks.readthedocs.io/en/latest) without having to install anything.
+A quick example: `docker run -d -rm -p 8888:8888 garo/jupyter-dot`
+
+
 ## TODO
 
 1. update [this](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels).
