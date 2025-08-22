@@ -1,11 +1,42 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
-from os.path import join
+from os.path import join, dirname, abspath, exists
+from os import environ, pathsep
+from pathlib import Path
+from shutil import which
 from subprocess import call
+import sys
 
 from pkg_resources import get_distribution
 
-if __name__ == '__main__':
-    dist = get_distribution('dot-kernel')
-    where = join(dist.location, 'dot_kernel_spec')
-    call(['jupyter', 'kernelspec', 'install', '--user', where])
+
+def activate_venv(venv_path, env=None):
+    """Simulate activating a virtual environment"""
+
+    venv_path = Path(join(venv_path, "..")).resolve()
+    if not env:
+        environ.copy()
+
+    if exists(join(venv_path, "pyvenv.cfg")):
+        if sys.platform == "win32":
+            bin_dir = "Scripts"
+        else:
+            bin_dir = "bin"
+        env["VIRTUAL_ENV"] = str(venv_path)
+        env["PATH"] = f"{join(venv_path, bin_dir)}{pathsep}{env['PATH']}"
+
+    if "PYTHONHOME" in env:
+        del env["PYTHONHOME"]
+
+    return env
+
+
+if __name__ == "__main__":
+    dist = get_distribution("dot-kernel")
+    where = join(dist.location, "dot_kernel_spec")
+    script_dir = dirname(abspath(sys.argv[0]))
+    env = activate_venv(script_dir)
+    call(
+        ["jupyter", "kernelspec", "install", "--user", where],
+        env=env,
+    )
